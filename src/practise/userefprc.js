@@ -1,7 +1,7 @@
 import { useCallback, useRef } from "react";
 
 export default function FormyRework() {
-
+    // Create a list of refs for the corresponding inputs
     const firstNameInputElement = useRef();
     const lastNameInputElement = useRef();
     const emailInputElement = useRef();
@@ -11,7 +11,7 @@ export default function FormyRework() {
     const partInputElement = useRef();
     const fullInputElement = useRef();
     const favColourInputElement = useRef();
-
+    // Checks which radiobutton is checked and updates the value accordingly
     function whichChecked(event) {
         if (umemployedInputElement.current?.checked){
             return "Unemplyed"
@@ -21,7 +21,7 @@ export default function FormyRework() {
             return "full-time"
         }
     }
-
+    // Handler that places the values of the inputs into an abject
     const handleSubmit = useCallback(
         () => (event) => {
             event.preventDefault()

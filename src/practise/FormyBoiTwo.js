@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function FormyBoiTwo() {
+    // Initiaises the form
     const [formData, setFormData] = useState(
         {
             email: "",
@@ -8,7 +9,7 @@ export default function FormyBoiTwo() {
             passwordConfirm: "",
             joinedNewsletter: true
         })
-
+        // Handles change
     function handleChange(event) {
         const {name, value, type, checked} = event.target
         setFormData(prevFormData => ({
@@ -16,7 +17,7 @@ export default function FormyBoiTwo() {
             [name]: type === "checkbox" ? checked : value
         }))
     }
-
+    // Handles when the page is submitted
     function handleSubmit(event) {
         event.preventdefault()
         if(formData.password === formData.passwordConfirm) {

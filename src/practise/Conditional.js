@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function Contitonal() {
+    // Handles state and initilaises the message
     const [messages, setMessages] = useState(["A"])
 
     return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function FormyBoi() {
+    // Initialise the object
     const [formData, setFormData] = useState(
         {
             firstName: "",
@@ -12,7 +13,7 @@ export default function FormyBoi() {
             favColour: "",
         }
     )
-
+    // Handler for the changes done to the input boxes
     function handleChange(event) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
@@ -22,12 +23,12 @@ export default function FormyBoi() {
             }
         })
     }
-
+    // Handler for when the page is subitted
     function handleSubmit(event) {
-        event.preventDefault() 
+        event.preventDefault()
     }
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
             <input
                 type="text"

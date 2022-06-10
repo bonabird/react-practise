@@ -1,8 +1,9 @@
 import { useState } from "react"
 
 export default function Joke(prop) {
+    // Handles whther the punchline is hwon or not
     const [isShown, setIsShown] = useState(false)
-
+    //Adjusts the state
     function toggleShown() {
         setIsShown(prevShown => !prevShown)
     }

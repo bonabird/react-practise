@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react"
 import styled, { css } from "styled-components"
 
+// Styling components using styled-components
 const StyledForms = styled.div`
 display: grid;
 grid-template: 40px 40px / 1fr 1fr;
 gap: 17px;
 margin-bottom: 17px;
 `
-
 const StyledInputs = styled.input`
 font-family: "Karla", sans-serif;
 border-radius: 5px;
 border: 1px solid #D5D4D8;
 text-indent: 5px;
 `
-
 const StyledButton = styled.button`
 grid-column: 1 / -1;
 font-family: "Karla", sans-serif;
@@ -24,16 +23,13 @@ color: white;
 border: none;
 cursor: pointer;
 `
-
 const StyledMeme = styled.div`
 position: relative;
 `
-
 const MemeImg = styled.img`
 max-width: 100%;
 border-radius: 3px;
 `
-
 const MemeHeaders = styled.h2`
 position: absolute;
 width: 80%;
@@ -68,13 +64,14 @@ text-shadow:
 `
 
 export default function Meme() {
+    // Setting state and initialising the first state
     const [meme, setMeme] = useState({
         topText: "",
         bottomText: "",
         randomImage: "https://i.imgflip.com/1bij.jpg"
     })
     const [allMemes, setAllMemes] = useState([])
-
+    // Using useEffect to handle the meme retreaver function which places all memes on an array.
     useEffect(() => {
         async function getMeme() {
             const res = await fetch("https://api.imgflip.com/get_memes")
@@ -83,7 +80,7 @@ export default function Meme() {
         }
         getMeme()
     }, [])
-
+    // the function called whenever the button is clicked. This gets a random image from the array.
     function getMemeImage() {
         const randomNumber = Math.floor(Math.random() * allMemes.length)
         const url = allMemes[randomNumber].url
@@ -92,7 +89,7 @@ export default function Meme() {
             randomImage: url
         }))
     }
-
+    // Handles text changes of the inboxes
     function handleChange(event) {
         const { name, value } = event.target
         setMeme(prevMeme => ({

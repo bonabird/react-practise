@@ -1,67 +1,57 @@
-import { useEffect, useState } from "react";
+import { FaBars, FaTimes } from 'react-icons/fa';
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../images/logo.svg"
-import classes from "./nav.module.css"
+import "./nav.css"
 
 export default function Nav() {
-    // const [click, setClick] = useState(false)
-    // const [button, setButton] = useState(false)
-
-    // const handleClick = () => setClick(!click)
-    // const closeMobileMenu = () => setClick(false)
-
-    // const showButton = () => {
-    //     if (window.innerWidth <= 1352) {
-    //         setButton(false)
-    //     } else {
-    //         setButton(true)
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     showButton();
-    //     window.addEventListener("resize", showButton)
-    //     window.removeEventListener("resize", showButton)
-    // }, []);
+    // State to handle the closing of the drawer
+    const [click, setClick] = useState(false)
+    // Handlers for the button click
+    const handleClick = () => setClick(!click)
+    const closeMobileMenu = () => setClick(false)
 
     return (
-        <header className={classes.header}>
-            <nav>
-                <div><NavLink to="/memeboi" className={navData => navData.isActive ? classes.active : ""}>
+        <header className="header">
+            <nav className="nav-container container" >
+                <NavLink to="/memeboi" className="nav-logo">
                     <img src={logo} />
-                </NavLink></div>
-                <ul>
-                    <li><NavLink to="/starboi" className={navData => navData.isActive ? classes.active : ""}>
+                </NavLink>
+                <div className='menu-icon' onClick={handleClick}>
+                    {click ? <FaTimes /> : <FaBars />}
+                </div>
+                <ul className={click ? "nav-menu active" : "nav-menu"}>
+                    <li><NavLink to="/starboi" className="nav-links" onClick={closeMobileMenu}>
                         StarBoi
                     </NavLink></li>
-                    <li><NavLink to="/countyboi" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/countyboi" className="nav-links" onClick={closeMobileMenu}>
                         CountyBoi
                     </NavLink></li>
-                    <li><NavLink to="/yeeeenaaaa" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/yeeeenaaaa" className="nav-links" onClick={closeMobileMenu}>
                         YeeeeNaaaa
                     </NavLink></li>
-                    <li><NavLink to="/addthings" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/addthings" className="nav-links" onClick={closeMobileMenu}>
                         AddThings
                     </NavLink></li>
-                    <li><NavLink to="/toplevelboi" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/toplevelboi" className="nav-links" onClick={closeMobileMenu}>
                         TopLevelBoi
                     </NavLink></li>
-                    <li><NavLink to="/conditional" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/conditional" className="nav-links" onClick={closeMobileMenu}>
                         Conditional
                     </NavLink></li>
-                    <li><NavLink to="/windowboi" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/windowboi" className="nav-links" onClick={closeMobileMenu}>
                         WindowBoi
                     </NavLink></li>
-                    <li><NavLink to="/formyboi" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/formyboi" className="nav-links" onClick={closeMobileMenu}>
                         FormyBoi
                     </NavLink></li>
-                    <li><NavLink to="/formyrework" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/formyrework" className="nav-links" onClick={closeMobileMenu}>
                         FormyRework
                     </NavLink></li>
-                    <li><NavLink to="/anotherformyboi" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/anotherformyboi" className="nav-links" onClick={closeMobileMenu}>
                         AnotherFormyBoi
                     </NavLink></li>
-                    <li><NavLink to="/userefprac" className={navData => navData.isActive ? classes.active : ""}>
+                    <li><NavLink to="/userefprac" className="nav-links" onClick={closeMobileMenu}>
                         UseRef
                     </NavLink></li>
                 </ul>

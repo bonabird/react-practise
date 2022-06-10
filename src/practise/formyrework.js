@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-
+// Initialise the object
 const initalData = 
 {
     firstName: "",
@@ -12,8 +12,10 @@ const initalData =
 }
 
 export default function FormyRework() {
+    // Hanldes the formdata
     const [formData, setFormData] = useState(initalData)
-
+    // Handler for the changes done to the input boxes
+    // Uses callbacks to limit th eamount of refrehes to the page
     const handleChange = useCallback(
         event => {
             const { name, value, type, checked } = event.target
@@ -24,7 +26,7 @@ export default function FormyRework() {
         },
         [formData]
     )
-
+    // Handler for when the page is subitted
     const handleSubmit = useCallback(
         () => (event) => {
             event.preventDefault()

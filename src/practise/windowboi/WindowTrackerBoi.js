@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 
 export default function WIndowTrackerBoi() {
-
+    // state the stores the value of the window whenever it changes
     const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
+    // Gets called everytime the window changes and uodates the value
     useEffect(() => {
         function watchWidth() {
             setWindowWidth(window.innerWidth)

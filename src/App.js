@@ -16,6 +16,7 @@ import './styles.css';
 import FormyRework from './practise/formyrework';
 
 function App() {
+  // Declaring the different paths for the router
   return (
     <div className="App">
       <Nav />
