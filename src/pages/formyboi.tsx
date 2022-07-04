@@ -14,7 +14,7 @@ export default function FormyBoi() {
         }
     )
     // Handler for the changes done to the input boxes
-    function handleChange(event) {
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
             return {
@@ -24,7 +24,7 @@ export default function FormyBoi() {
         })
     }
     // Handler for when the page is subitted
-    function handleSubmit(event) {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
     }
 
