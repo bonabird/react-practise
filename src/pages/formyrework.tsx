@@ -1,26 +1,30 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
+// Initialise the object
+const initalData = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  comments: "",
+  isFriendly: true,
+  employment: "",
+  favColour: "",
+};
 
-export default function FormyBoi() {
-  // Initialise the object
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    comments: "",
-    isFriendly: true,
-    employment: "",
-    favColour: "",
-  });
+export default function FormyRework() {
+  // Hanldes the formdata
+  const [formData, setFormData] = useState(initalData);
   // Handler for the changes done to the input boxes
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value, type, checked } = event.target;
-    setFormData((prevFormData) => {
-      return {
-        ...prevFormData,
-        [name]: type === "checkbox" ? checked : value,
-      };
-    });
-  }
+  // Uses callbacks to limit th eamount of refrehes to the page
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    },
+    [formData]
+  );
 
   // Handler for the changes done to the area input boxes
   function areaChange(event: React.ChangeEvent<HTMLTextAreaElement>) {
@@ -33,16 +37,16 @@ export default function FormyBoi() {
     });
   }
 
-    // Handler for the changes done to the area input boxes
-    function selectChange(event: React.ChangeEvent<HTMLSelectElement>) {
-        const { name, value } = event.target;
-        setFormData((prevFormData) => {
-          return {
-            ...prevFormData,
-            [name]: value,
-          };
-        });
-      }
+  // Handler for the changes done to the area input boxes
+  function selectChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: value,
+      };
+    });
+  }
 
   // Handler for when the page is subitted
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {

@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { FaBars, FaTimes } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import logo from "../../images/logo.svg";
 import "./nav.css";
 
 export default function Nav() {
@@ -10,6 +12,12 @@ export default function Nav() {
   return (
     <header className="header">
       <nav className="nav-container container">
+        <NavLink to="/memeboi" className="nav-logo">
+          <img src={logo} />
+        </NavLink>
+        <div className="menu-icon" onClick={handleClick}>
+          {click ? <FaTimes /> : <FaBars />}
+        </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li>
             <NavLink
@@ -72,6 +80,42 @@ export default function Nav() {
               onClick={closeMobileMenu}
             >
               WindowBoi
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/formyboi"
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              FormyBoi
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/formyrework"
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              FormyRework
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/anotherformyboi"
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              AnotherFormyBoi
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/userefprac"
+              className="nav-links"
+              onClick={closeMobileMenu}
+            >
+              UseRef
             </NavLink>
           </li>
         </ul>
